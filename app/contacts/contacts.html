@@ -1,0 +1,189 @@
+<div class="row" ng-controller="ContactsController">
+    <div class="col-md-10">
+        <div data-alert ng-show="cc.msg" class="alert-box">{{cc.msg}}</div>
+        <div class="row" ng-show="cc.contactShow">
+            <div class="panel">
+                <h3>{{cc.name}}</h3>
+                <ul>
+                    <li><strong>Company</strong>: {{cc.company}}</li>
+                    <li><strong>Email Address</strong>: {{cc.email}}</li>
+                    <h5>Phone Numbers</h5>
+                    <li><strong>Work</strong>: {{cc.work_phone}}</li>
+                    <li><strong>Home</strong>: {{cc.home_phone}}</li>
+                    <li><strong>Mobile</strong>: {{cc.mobile_phone}}</li>
+                    <h5>Location Info</h5>
+                    <li>{{cc.street_address}}</li>
+                    <li>{{cc.city}}, {{cc.state}} {{cc.zipcode}}</li>
+                </ul>
+            </div>
+        </div>
+        <form ng-submit="cc.addFormSubmit()" ng-if="cc.addFormShow">
+            <h3>Add Contact</h3>
+            <!-- Add Form -->
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Name:
+                        <input type="text" ng-model="cc.data.name" placeholder="Contact Name" required />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Email:
+                        <input type="text" ng-model="cc.data.email" placeholder="Contact Email" required />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Company:
+                        <input type="text" ng-model="cc.data.company" placeholder="Company Name" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Work Phone:
+                        <input type="text" ng-model="cc.data.phone.work_phone" placeholder="Work Phone" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Mobile Phone:
+                        <input type="text" ng-model="cc.data.phone.mobile_phone" placeholder="Mobile Phone" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Home Phone:
+                        <input type="text" ng-model="cc.data.phone.home_phone" placeholder="Home Phone" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Street Address:
+                        <input type="text" ng-model="cc.data.address.street_address" placeholder="Street Address" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>City:
+                        <input type="text" ng-model="cc.data.address.city" placeholder="City" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>State:
+                        <input type="text" ng-model="cc.data.address.state" placeholder="State" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Zip Code:
+                        <input type="text" ng-model="cc.data.address.zipcode" placeholder="Zip Code" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <input type="submit" value="Add Contact" class="button" />
+                    <a class="button" ng-click="cc.hideAddForm()">Cancel</a>
+                </div>
+            </div>
+        </form>
+
+        <form ng-submit="cc.editMe()" ng-if="cc.editFormShow">
+            <h3>Edit Contact</h3>
+            <!-- Add Form -->
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Name:
+                        <input type="text" ng-model="cc.data.name" placeholder="Contact Name" required />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Email:
+                        <input type="text" ng-model="cc.data.email" placeholder="Contact Email" required />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Company:
+                        <input type="text" ng-model="cc.data.company" placeholder="Company Name" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Work Phone:
+                        <input type="text" ng-model="cc.data.phone.work_phone" placeholder="Work Phone" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Mobile Phone:
+                        <input type="text" ng-model="cc.data.phone.mobile_phone" placeholder="Mobile Phone" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Home Phone:
+                        <input type="text" ng-model="cc.data.phone.home_phone" placeholder="Home Phone" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>Street Address:
+                        <input type="text" ng-model="cc.data.address.street_address" placeholder="Street Address" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>City:
+                        <input type="text" ng-model="cc.data.address.city" placeholder="City" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-6 columns">
+                    <label>State:
+                        <input type="text" ng-model="cc.data.address.state" placeholder="State" />
+                    </label>
+                </div>
+                <div class="large-6 columns">
+                    <label>Zip Code:
+                        <input type="text" ng-model="cc.data.address.zipcode" placeholder="Zip Code" />
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <input type="submit" value="Edit Contact" class="button" />
+                    <input type="submit" value="Cancel" class="button" ng-click="cc.hideEditForm()" />
+                </div>
+            </div>
+        </form>
+
+        <h3>Your Contacts</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:200px">Name</th>
+                    <th style="width:200px">Company</th>
+                    <th style="width:25%">Email</th>
+                    <th style="width:25%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="contact in cc.contacts">
+                <th><a ng-click="cc.showContact(contact)">{{contact.name}}</a></th>
+                <th>{{contact.company}}</th>
+                <th>{{contact.email}}</th>
+                <th><a class="button tiny" ng-click="cc.showEditForm(contact)">Edit</a>
+                    <a class="button tiny alert" ng-click="cc.removeContact(contact)">Delete</a>
+                </th>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+        <a class="button large" ng-click="cc.showAddForm()" ng-hide="cc.addFormShow">+</a>
+        <a class="button large" ng-click="cc.hide()" ng-show="cc.addFormShow">-</a>
+        <a class="button large" ng-click="cc.hide()" ng-if="cc.contactShow">-</a>
+    </div>
+</div>
